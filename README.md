@@ -24,3 +24,7 @@ agregar imagen del diagrama...
 agregar imagen del diagrama...
 
 ## Prototipo del proyecto
+[Figma-Pokedex]
+
+
+[Figma-Pokedex]: https://www.figma.com/file/2gCQSVnbD8AxOpzM4kIJ56/Pokedex?type=design&mode=design&t=MGWz17h9MrwZGsDE-1
