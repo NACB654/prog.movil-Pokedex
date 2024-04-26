@@ -12,7 +12,9 @@ del Pokemon.
 </p>
 
 ## Diagrama de casos de uso (requerimientos funcionales)
-agregar la imagen del diagrama...
+<p align="center">
+  <img src="https://github.com/NACB654/prog.movil-Pokedex/assets/140445183/5392a4a0-55f5-4aea-b82c-22827cf11c07" alt="casos de uso" width="800px"/>
+</p>
 
 ## Requerimientos no funcionales
 agregar los requerimientos no funcionales...
