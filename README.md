@@ -27,7 +27,7 @@ del Pokemon.
 agregar imagen del diagrama...
 
 ## Diagrama de despliegue
-agregar imagen del diagrama...
+
 <p align="center">
   <img src="https://github.com/NACB654/prog.movil-Pokedex/assets/112772800/2a052f91-88fe-4a96-9f92-3a42d2158e2e" alt="despliegue"/>
 </p>
