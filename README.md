@@ -17,11 +17,13 @@ del Pokemon.
 </p>
 
 ## Requerimientos no funcionales
-- El aplicación será realizado en Flutter para dispositivos Android.
-- El backend sera realizado con Python utilizando el framework Flask.
-- Se utilizará PostgreSQL para la base de datos.
-- Tanto el backend como la base de datos serán operadas en la nube utilizando los servicios de Microsoft Azure.
-- Para la detección de Pokemones se utilizará un modelo de clasificación de tipo transformer ya preentrenado.
+- Disponibilidad de la Aplicación: Asegurar que la aplicación esté operativa con un tiempo de inactividad mínimo para mantener la confianza del usuario y la integridad del servicio.
+- Seguridad de la API: Implementar medidas robustas de seguridad en la API de Flask para proteger la aplicación contra ataques y garantizar la privacidad de los datos.
+- Desempeño y Carga: Garantizar que la aplicación mantenga un rendimiento óptimo incluso bajo cargas de usuario altas y durante picos de tráfico.
+- Compatibilidad: La aplicación debe funcionar de manera consistente en varios dispositivos Android, asegurando una experiencia de usuario uniforme.
+- Escalabilidad de la Base de Datos*: La base de datos debe ser capaz de manejar el crecimiento del volumen de datos y del número de transacciones sin degradar el rendimiento.
+- Respaldo y Recuperación: Mantener una estrategia efectiva de respaldo y recuperación de datos para la base de datos en Azure, previniendo la pérdida de datos críticos.
+- Mantenibilidad: Facilitar el mantenimiento del sistema con código bien documentado y estructurado, permitiendo actualizaciones y mejoras con eficiencia.
  
 ## Diagrama de base de datos
 <p align="center">
