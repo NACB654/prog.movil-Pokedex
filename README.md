@@ -23,7 +23,7 @@ del Pokemon.
 - Tanto el backend como la base de datos serán operadas en la nube utilizando los servicios de Microsoft Azure.
 - Para la detección de Pokemones se utilizará un modelo de clasificación de tipo transformer ya preentrenado.
  
-## Diagrama de entidad-relación
+## Diagrama de base de datos
 agregar imagen del diagrama...
 
 ## Diagrama de despliegue
