@@ -27,7 +27,7 @@ del Pokemon.
 agregar imagen del diagrama...
 
 ## Diagrama de despliegue
-
+El presente diagrama de despliegue muestra los diferentes componentes del app. Primero se tiene el dispositivo o entorno que consiste en el celular Android a ser utilizado, el cual contiene el componente de aplicativo basado en Flutter. Este recibe informacion del nodo Base de Datos.
 <p align="center">
   <img src="https://github.com/NACB654/prog.movil-Pokedex/assets/112772800/2a052f91-88fe-4a96-9f92-3a42d2158e2e" alt="despliegue"/>
 </p>
