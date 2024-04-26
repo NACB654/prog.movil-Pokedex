@@ -34,7 +34,8 @@ del Pokemon.
 ## Diagrama de despliegue
 El presente diagrama de despliegue muestra los diferentes componentes del app. Primero se tiene el dispositivo o entorno que consiste en el celular Android a ser utilizado, el cual contiene el componente de aplicativo basado en Flutter. Este recibe informacion del nodo Base de Datos. La cual tendra los servicios de Microsoft Azure y la base de datos basada en PostgreSQL como componentes. Este tendra una relacion directa con el backend seleccionado, el cual consiste en un aplicativo mediante Flask que contiene componentes como el flask API y el modelo de AI entrenado (o el transformador), el cual permitira el funcionamiento del Pokedex.
 <p align="center">
-  <img src="https://github.com/NACB654/prog.movil-Pokedex/assets/112772800/2a052f91-88fe-4a96-9f92-3a42d2158e2e" alt="despliegue"/>
+  <img src="https://github.com/NACB654/prog.movil-Pokedex/assets/112772800/6d52b2e1-feab-421b-9caa-61e9371f1f65
+" alt="despliegue"/>
 </p>
 
 
