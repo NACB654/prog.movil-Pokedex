@@ -17,8 +17,12 @@ del Pokemon.
 </p>
 
 ## Requerimientos no funcionales
-agregar los requerimientos no funcionales...
-
+- El aplicación será realizado en Flutter para dispositivos Android.
+- El backend sera realizado con Python utilizando el framework Flask.
+- Se utilizará PostgreSQL para la base de datos.
+- Tanto el backend como la base de datos serán operadas en la nube utilizando los servicios de Microsoft Azure.
+- Para la detección de Pokemones se utilizará un modelo de clasificación de tipo transformer ya preentrenado.
+ 
 ## Diagrama de entidad-relación
 agregar imagen del diagrama...
 
@@ -27,6 +31,5 @@ agregar imagen del diagrama...
 
 ## Prototipo del proyecto
 [Figma-Pokedex]
-
 
 [Figma-Pokedex]: https://www.figma.com/file/2gCQSVnbD8AxOpzM4kIJ56/Pokedex?type=design&mode=design&t=MGWz17h9MrwZGsDE-1
