@@ -24,7 +24,9 @@ del Pokemon.
 - Para la detección de Pokemones se utilizará un modelo de clasificación de tipo transformer ya preentrenado.
  
 ## Diagrama de base de datos
-agregar imagen del diagrama...
+<p align="center">
+  <img src="https://github.com/NACB654/prog.movil-Pokedex/assets/118631042/56bb74c2-8d96-41ed-bc23-9f64e4d5faa8" alt="casos de uso" width="800px"/>
+</p>
 
 ## Diagrama de despliegue
 El presente diagrama de despliegue muestra los diferentes componentes del app. Primero se tiene el dispositivo o entorno que consiste en el celular Android a ser utilizado, el cual contiene el componente de aplicativo basado en Flutter. Este recibe informacion del nodo Base de Datos.
