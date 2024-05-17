@@ -13,7 +13,7 @@ class MyAppBar extends StatelessWidget {
         fit: BoxFit.cover,
       ),
       backgroundColor: backColor,
-      scrolledUnderElevation: 4.0,
+      scrolledUnderElevation: 0,
     );
   }
 }

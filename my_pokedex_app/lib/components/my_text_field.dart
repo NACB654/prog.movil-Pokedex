@@ -11,10 +11,18 @@ class MyTextField extends StatelessWidget {
     return TextField(
       style: const TextStyle(fontSize: 16),
       decoration: InputDecoration(
-          prefixIcon: withIcon == true ? const Icon(Icons.search) : null,
-          labelText: label,
-          border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(4)))),
+        prefixIcon: withIcon == true ? const Icon(Icons.search) : null,
+        labelText: label,
+        floatingLabelStyle: const TextStyle(color: Color(0xFFD2232A)),
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(4)),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Color(0xFFD2232A),
+          ),
+        ),
+      ),
     );
   }
 }
