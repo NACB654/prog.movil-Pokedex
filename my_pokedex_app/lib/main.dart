@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_pokedex_app/pages/home/home_page.dart';
 import 'package:my_pokedex_app/pages/login/login_page.dart';
+import 'package:my_pokedex_app/pages/register/register_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +13,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: "Login", home: HomePage());
+    return MaterialApp(title: "Login", home: RegisterPage());
   }
 }
