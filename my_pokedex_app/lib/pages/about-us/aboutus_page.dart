@@ -44,7 +44,7 @@ class _AboutState extends State<AboutPage> {
             Image.asset(
               'assets/images/pikachu.png',
               width: 220,
-              height: 300,
+              height: 250,
             ),
             const Text(
               'Obra de:\nGonzalo García',
@@ -57,8 +57,8 @@ class _AboutState extends State<AboutPage> {
             const SizedBox(height: 20),
             Image.asset(
               'assets/images/pokeball.png',
-              width: 150,
-              height: 150,
+              width: 80,
+              height: 120,
             ),
           ],
         ),
@@ -68,29 +68,14 @@ class _AboutState extends State<AboutPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+        home: Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: backColor,
-      body: Column(
-        children: [
-          PreferredSize(
-            preferredSize: const Size.fromHeight(130),
-            child: MyAppBar(backColor),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-          Expanded(
-            child: _buildBody(context),
-          ),
-        ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(130),
+        child: MyAppBar(backColor),
       ),
-    );
+      body: _buildBody(context),
+    ));
   }
 }

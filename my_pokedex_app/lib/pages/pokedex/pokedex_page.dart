@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:my_pokedex_app/components/my_app_bar.dart';
 import 'package:my_pokedex_app/components/my_text_field.dart';
 import 'package:get/get.dart';
+import 'package:my_pokedex_app/models/entities/pokemon.dart';
 import 'pokedex_controller.dart';
 import 'package:my_pokedex_app/components/pokedex_entry.dart';
-
 
 class PokedexPage extends StatefulWidget {
   @override
@@ -14,6 +14,29 @@ class PokedexPage extends StatefulWidget {
 class _PokedexPageState extends State<PokedexPage> {
   Color backColor = const Color(0xFFF4F2F2);
   PokedexController control = Get.put(PokedexController());
+
+  @override
+  void initState() {
+    control.filterPokemons = control.pokemons;
+    control.filterController.addListener(filterByName);
+    super.initState();
+  }
+
+  void filterByName() {
+    setState(() {
+      String filterPokemon = control.filterController.text;
+      control.filterPokemons = control.pokemons
+          .where(
+              (pokemon) => pokemon.nombre.toLowerCase().contains(filterPokemon))
+          .toList();
+    });
+  }
+
+  @override
+  void dispose() {
+    control.filterController.dispose();
+    super.dispose();
+  }
 
   Widget _buildBody(BuildContext context) {
     return Container(
@@ -26,15 +49,16 @@ class _PokedexPageState extends State<PokedexPage> {
         children: [
           const SizedBox(height: 30),
           MyTextField('Filtrar', true, control.filterController),
+          const SizedBox(height: 20),
           Expanded(
             child: Obx(() {
               if (control.pokemons.isEmpty) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else {
                 return ListView.builder(
-                  itemCount: control.pokemons.length,
+                  itemCount: control.filterPokemons.length,
                   itemBuilder: (context, index) {
-                    var pokemon = control.pokemons[index];
+                    Pokemon pokemon = control.filterPokemons[index];
                     return PokedexEntry(
                       number: '#${pokemon.numero}',
                       name: pokemon.nombre,

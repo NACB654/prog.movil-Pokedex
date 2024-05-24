@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_pokedex_app/components/my_app_bar.dart';
 import 'package:my_pokedex_app/components/my_text_field.dart';
-import 'package:my_pokedex_app/pages/about-us/about-us_page.dart';
+import 'package:my_pokedex_app/pages/about-us/aboutus_page.dart';
 import 'package:my_pokedex_app/pages/config/config_controller.dart';
 import 'package:my_pokedex_app/pages/login/login_page.dart';
 
