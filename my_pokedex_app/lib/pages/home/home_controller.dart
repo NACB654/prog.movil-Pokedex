@@ -22,6 +22,6 @@ class HomeController extends GetxController {
 
   void goToConfig(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ConfigPage()));
+        context, MaterialPageRoute(builder: (context) => SettingsScreen()));
   }
 }

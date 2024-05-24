@@ -42,7 +42,7 @@ class _AboutState extends State<About> {
             ),
             SizedBox(height: 20),
             Image.asset(
-              'assets/images/pikachu.png', // Asegúrate de que la imagen de Pikachu esté en la carpeta assets
+              'assets/images/pikachu.png',
               width: 220,
               height: 300,
             ),
@@ -71,12 +71,12 @@ class _AboutState extends State<About> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: backColor,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(130),
-        child: MyAppBar(backColor),
-      ),
       body: Column(
         children: [
+          PreferredSize(
+            preferredSize: const Size.fromHeight(130),
+            child: MyAppBar(backColor),
+          ),
           Align(
             alignment: Alignment.centerLeft,
             child: IconButton(

@@ -183,10 +183,9 @@ class SettingsScreen extends StatelessWidget {
                     ),
                     child: Text(
                       'ENVIAR',
-                      style: TextStyle(color: Colors.white), // Establece el color del texto a blanco
+                      style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () {
-                      // Lógica para enviar el correo
                       Navigator.of(context).pop();
                       _showPasswordChangeRequestSentDialog(context);
                     },
