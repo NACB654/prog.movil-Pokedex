@@ -1,245 +1,276 @@
 import 'package:flutter/material.dart';
-import 'package:my_pokedex_app/pages/about-us/about-us_page.dart';
 import 'package:my_pokedex_app/components/my_app_bar.dart';
+import 'package:my_pokedex_app/components/my_text_field.dart';
+import 'package:my_pokedex_app/pages/about-us/about-us_page.dart';
+import 'package:my_pokedex_app/pages/config/config_controller.dart';
 import 'package:my_pokedex_app/pages/login/login_page.dart';
 
-class SettingsScreen extends StatelessWidget {
+class ConfigPage extends StatelessWidget {
   Color backColor = const Color(0xFFF4F2F2);
+  ConfigController control = ConfigController();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: backColor,
-        child: Column(
-          children: [
-            PreferredSize(
-              preferredSize: const Size.fromHeight(130),
-              child: MyAppBar(backColor),
+  Widget _buildBody(BuildContext context) {
+    return Container(
+      color: backColor,
+      width: double.infinity,
+      height: double.infinity,
+      child: Column(
+        children: [
+          const SizedBox(height: 50),
+          _image(context),
+          const SizedBox(height: 10),
+          Container(
+            alignment: Alignment.centerLeft,
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: () => _dialogBuilder(context),
+                  child: const Text(
+                    "Cambiar contraseña",
+                    style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 22,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => AboutPage()));
+                  },
+                  child: const Text(
+                    "Acerca de",
+                    style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 22,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                GestureDetector(
+                  onTap: () => _cerrarSesion(context),
+                  child: const Text(
+                    "Cerrar sesión",
+                    style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 22,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ),
+              ],
             ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
+          ),
+          const SizedBox(height: 10),
+          _image(context),
+          const SizedBox(height: 30),
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/qr.png"),
+                  fit: BoxFit.fitHeight),
             ),
-            Expanded(
-              child: ListView(
-                children: <Widget>[
-                  ListTile(
-                    title: Text('Cambiar contraseña'),
-                    onTap: () {
-                      _showChangePasswordDialog(context);
-                    },
-                  ),
-                  ListTile(
-                    title: Text('Acerca de'),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => About()),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: Text('Cerrar sesión'),
-                    onTap: () {
-                      _showLogoutConfirmationDialog(context);
-                    },
-                  ),
-                  Center(
-                    child: Image.asset(
-                      'assets/images/your_qr_code_image.png',
-                      width: 220,
-                      height: 300,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+            height: 270,
+          ),
+        ],
       ),
     );
   }
 
-  void _showLogoutConfirmationDialog(BuildContext context) {
-    Color backColor = const Color(0xFFF4F2F2);
+  Widget _image(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage("assets/images/Line 1.png"), fit: BoxFit.contain),
+      ),
+      height: 10,
+      child: null,
+    );
+  }
 
-    showDialog(
+  Future<void> _dialogBuilder(BuildContext context) {
+    return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
+        return AlertDialog(
+          content: const Text(
+            "Ingresa la dirección email con el cual tienes tu cuenta registrada para enviar un correo y cambiar su contraseña",
+            style: TextStyle(fontSize: 16),
+            textAlign: TextAlign.center,
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
-            child: Container(
-              color: backColor,
-              padding: EdgeInsets.all(16.0),
+          actions: <Widget>[
+            Align(
+              alignment: Alignment.center,
               child: Column(
-                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('¿Estás seguro que quieres cerrar sesión?'),
-                  SizedBox(height: 16), // Espacio entre el texto y los botones
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        side: BorderSide(color: Colors.red),
+                  MyTextField(
+                      "Correo electronico", false, control.emailController),
+                  const SizedBox(height: 15),
+                  //Boton
+                  SizedBox(
+                    width: 120,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        textStyle: Theme.of(context).textTheme.labelLarge,
+                        backgroundColor: const Color(0xFFD2232A),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(4),
+                          ),
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      'SÍ',
-                      style: TextStyle(color: Colors.red),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop(); // Cierra el diálogo
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => LoginPage()),
-                      );
-                    },
-                  ),
-                  SizedBox(height: 8), // Espacio entre los botones
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                        side: BorderSide(color: Colors.red),
+                      child: const Text(
+                        'Enviar',
+                        style:
+                            TextStyle(color: Color(0xFFFFFFFF), fontSize: 16),
                       ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        _dialogBuilder2(context);
+                      },
                     ),
-                    child: Text(
-                      'NO',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
                   ),
+                  //Boton
                 ],
               ),
-            ),
-          ),
+            )
+          ],
         );
       },
     );
   }
 
-  void _showChangePasswordDialog(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    Color backColor = const Color(0xFFF4F2F2);
-
-    showDialog(
+  Future<void> _dialogBuilder2(BuildContext context) {
+    return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
+        return AlertDialog(
+          content: const Text(
+            "Se a enviado a tu correo la solicitud de cambio de contraseña",
+            style: TextStyle(fontSize: 16),
+            textAlign: TextAlign.center,
           ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
-            child: Container(
-              color: backColor,
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          'Ingresa la dirección email con el cual tienes tu cuenta registrada para enviar un correo y cambiar su contraseña',
-                          style: TextStyle(fontSize: 14),
-                        ),
+          actions: <Widget>[
+            Align(
+              alignment: Alignment.center,
+              child:
+                  //Boton
+                  SizedBox(
+                width: 120,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: Theme.of(context).textTheme.labelLarge,
+                    backgroundColor: const Color(0xFFD2232A),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(4),
                       ),
-                      IconButton(
-                        icon: Icon(Icons.close),
+                    ),
+                  ),
+                  child: const Text(
+                    'Regresar',
+                    style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 16),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ),
+              //Boton
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _cerrarSesion(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: const Text(
+            "¿Estas seguro que quieres cerrar sesión?",
+            style: TextStyle(fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
+          backgroundColor: backColor,
+          actions: <Widget>[
+            Align(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    //Boton
+                    SizedBox(
+                      width: 80,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: Theme.of(context).textTheme.labelLarge,
+                          backgroundColor: backColor,
+                          side: const BorderSide(color: Color(0xFFD2232A)),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(4),
+                            ),
+                          ),
+                        ),
+                        child: const Text(
+                          'Si',
+                          style:
+                              TextStyle(color: Color(0xFFD2232A), fontSize: 16),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
+                        },
+                      ),
+                    ),
+                    //Boton
+                    SizedBox(
+                      width: 80,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: Theme.of(context).textTheme.labelLarge,
+                          backgroundColor: const Color(0xFFD2232A),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(4),
+                            ),
+                          ),
+                        ),
+                        child: const Text(
+                          'No',
+                          style:
+                              TextStyle(color: Color(0xFFFFFFFF), fontSize: 16),
+                        ),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
                       ),
-                    ],
-                  ),
-                  TextField(
-                    controller: emailController,
-                    decoration: InputDecoration(
-                      labelText: 'Correo electrónico',
-                      border: OutlineInputBorder(),
                     ),
-                  ),
-                  SizedBox(height: 16), // Espacio entre el campo de texto y el botón
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                    ),
-                    child: Text(
-                      'ENVIAR',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      _showPasswordChangeRequestSentDialog(context);
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
+                    //Boton
+                  ],
+                )),
+          ],
         );
       },
     );
   }
 
-  void _showPasswordChangeRequestSentDialog(BuildContext context) {
-    Color backColor = const Color(0xFFF4F2F2);
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
-            child: Container(
-              color: backColor,
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text('Se ha enviado a tu correo la solicitud de cambio de contraseña'),
-                  SizedBox(height: 16), // Espacio entre el texto y los botones
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                    ),
-                    child: Text(
-                      'REGRESAR',
-                      style: TextStyle(color: Colors.white), // Establece el color del texto a blanco
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+      resizeToAvoidBottomInset: true,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(130),
+        child: MyAppBar(backColor),
+      ),
+      body: _buildBody(context),
+    ));
   }
 }

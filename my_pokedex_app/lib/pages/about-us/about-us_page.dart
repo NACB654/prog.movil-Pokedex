@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:my_pokedex_app/components/my_app_bar.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
-class About extends StatefulWidget {
+class AboutPage extends StatefulWidget {
   @override
-  State<About> createState() => _AboutState();
+  State<AboutPage> createState() => _AboutState();
 }
 
-class _AboutState extends State<About> {
+class _AboutState extends State<AboutPage> {
   Color backColor = const Color(0xFFF4F2F2);
   bool isKeyboardOpen = false;
 
@@ -32,7 +32,7 @@ class _AboutState extends State<About> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Esta aplicación fue desarrollada con\nfines educativos.\nNintendo no nos demandes :)',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -40,13 +40,13 @@ class _AboutState extends State<About> {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Image.asset(
               'assets/images/pikachu.png',
               width: 220,
               height: 300,
             ),
-            Text(
+            const Text(
               'Obra de:\nGonzalo García',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -54,7 +54,7 @@ class _AboutState extends State<About> {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Image.asset(
               'assets/images/pokeball.png',
               width: 150,
@@ -80,7 +80,7 @@ class _AboutState extends State<About> {
           Align(
             alignment: Alignment.centerLeft,
             child: IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.pop(context);
               },
