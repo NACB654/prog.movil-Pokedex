@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_pokedex_app/components/my_app_bar.dart';
-import 'package:my_pokedex_app/components/my_buttons.dart';
 import 'package:my_pokedex_app/components/my_text_field.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-// import 'package:get/get.dart';
+import 'package:get/get.dart';
+import 'package:my_pokedex_app/pages/login/login_controller.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -13,6 +13,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   Color backColor = const Color(0xFFF4F2F2);
   bool isKeyboardOpen = false;
+  LoginController control = Get.put(LoginController());
 
   @override
   void initState() {
@@ -84,11 +85,21 @@ class _LoginPageState extends State<LoginPage> {
       padding: const EdgeInsets.all(15),
       child: Column(
         children: [
-          SizedBox(width: 300, child: MyTextField("Usuario", false)),
+          SizedBox(width: 300, child: MyTextField("Usuario", false, control.userController)),
           const SizedBox(height: 20),
-          SizedBox(width: 300, child: MyTextField("Password", false)),
-          const SizedBox(height: 20),
-          MyButtons()
+          SizedBox(width: 300, child: MyTextField("Password", false, control.passwordController)),
+          const SizedBox(height: 10),
+          Obx(
+            () => control.message.value == ''
+                ? const SizedBox(height: 0)
+                : Text(
+                    control.message.value,
+                    style: TextStyle(color: control.messageColor.value),
+                  ),
+          ),
+          const SizedBox(height: 10),
+          _mybutton(context, "Ingresar")
+          
         ],
       ),
     );
@@ -98,7 +109,9 @@ class _LoginPageState extends State<LoginPage> {
     return Column(
       children: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            control.goToSignIn(context);
+          },
           child: const Text(
             "Crear Cuenta",
             textAlign: TextAlign.center,
@@ -111,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
         const SizedBox(height: 10),
         GestureDetector(
-          onTap: () {},
+          onTap: () => _dialogBuilder(context),
           child: const Text(
             "Recuperar Contraseña",
             textAlign: TextAlign.center,
@@ -123,6 +136,123 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ],
+    );
+  }
+
+  Future<void> _dialogBuilder(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: const Text(
+            "Ingresa la dirección email con el cual tienes tu cuenta registrada para enviar un correo y cambiar su contraseña",
+            style: TextStyle(fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
+          actions: <Widget>[
+            Align(
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  MyTextField("Correo electronico", false, control.emailController),
+                  const SizedBox(height: 15),
+                  //Boton
+                  SizedBox(
+                    width: 120,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        textStyle: Theme.of(context).textTheme.labelLarge,
+                        backgroundColor: const Color(0xFFD2232A),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(4),
+                          ),
+                        ),
+                      ),
+                      child: const Text(
+                        'Enviar',
+                        style:
+                            TextStyle(color: Color(0xFFFFFFFF), fontSize: 16),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        _dialogBuilder2(context);
+                      },
+                    ),
+                  ),
+                  //Boton
+                ],
+              ),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _dialogBuilder2(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: const Text(
+            "Se a enviado a tu correo la solicitud de cambio de contraseña",
+            style: TextStyle(fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
+          actions: <Widget>[
+            Align(
+              alignment: Alignment.center,
+              child:
+                  //Boton
+                  SizedBox(
+                width: 120,
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: Theme.of(context).textTheme.labelLarge,
+                    backgroundColor: const Color(0xFFD2232A),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(4),
+                      ),
+                    ),
+                  ),
+                  child: const Text(
+                    'Regresar',
+                    style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 16),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ),
+              //Boton
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _mybutton(BuildContext context, String label) {
+    return SizedBox(
+      width: 200,
+      child: TextButton(
+        onPressed: () => {control.loginAccount(context)},
+        style: TextButton.styleFrom(
+          textStyle: Theme.of(context).textTheme.labelLarge,
+          backgroundColor: const Color(0xFFD2232A),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(4),
+            ),
+          ),
+        ),
+        child: Text(
+          label,
+          style: const TextStyle(color: Color(0xFFFFFFFF), fontSize: 16),
+        ),
+      ),
     );
   }
 

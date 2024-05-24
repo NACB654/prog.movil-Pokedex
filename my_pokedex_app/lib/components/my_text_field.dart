@@ -3,17 +3,19 @@ import 'package:flutter/material.dart';
 class MyTextField extends StatelessWidget {
   String label = '';
   bool withIcon = false;
+  TextEditingController textControl;
 
-  MyTextField(this.label, this.withIcon, {super.key});
+  MyTextField(this.label, this.withIcon, this.textControl, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       style: const TextStyle(fontSize: 16),
+      cursorColor: const Color(0xFFD2232A),
       decoration: InputDecoration(
         prefixIcon: withIcon == true ? const Icon(Icons.search) : null,
         labelText: label,
-        floatingLabelStyle: const TextStyle(color: Color(0xFFD2232A)),
+        labelStyle: const TextStyle(color: Colors.black),
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(4)),
         ),
@@ -23,6 +25,7 @@ class MyTextField extends StatelessWidget {
           ),
         ),
       ),
+      controller: textControl,
     );
   }
 }
