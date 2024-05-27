@@ -136,6 +136,86 @@ class PokedexController extends GetxController {
         "tipos": ["NORMAL"]
       },
       {
+        "id": 63,
+        "nombre": "Abra",
+        "numero": 63,
+        "peso": 19.5,
+        "altura": 0.9,
+        "descripcion":
+            "Sleeps 18 hours a day. If it senses danger, it will teleport itself to safety even as it sleeps.",
+        "ataque": 20,
+        "defensa": 15,
+        "ataqueEspecial": 105,
+        "defensaEspecial": 55,
+        "velocidad": 90,
+        "audioUrl": "https://example.com/audio/abra.mp3",
+        "imagenUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/63.png",
+        "spriteUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/63.png",
+        "tipos": ["PSYCHIC"]
+      },
+      {
+        "id": 66,
+        "nombre": "Machop",
+        "numero": 66,
+        "peso": 19.5,
+        "altura": 0.8,
+        "descripcion":
+            "Loves to build its muscles. It trains in all styles of martial arts to become even stronger.",
+        "ataque": 80,
+        "defensa": 50,
+        "ataqueEspecial": 35,
+        "defensaEspecial": 35,
+        "velocidad": 35,
+        "audioUrl": "https://example.com/audio/machop.mp3",
+        "imagenUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/66.png",
+        "spriteUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/66.png",
+        "tipos": ["FIGHTING"]
+      },
+      {
+        "id": 133,
+        "nombre": "Eevee",
+        "numero": 133,
+        "peso": 6.5,
+        "altura": 0.3,
+        "descripcion":
+            "A rare Pokémon that adapts to harsh environments by taking on different evolutionary forms.",
+        "ataque": 55,
+        "defensa": 50,
+        "ataqueEspecial": 45,
+        "defensaEspecial": 65,
+        "velocidad": 55,
+        "audioUrl": "https://example.com/audio/eevee.mp3",
+        "imagenUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png",
+        "spriteUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png",
+        "tipos": ["NORMAL"]
+      },
+      {
+        "id": 147,
+        "nombre": "Dratini",
+        "numero": 147,
+        "peso": 3.3,
+        "altura": 1.8,
+        "descripcion":
+            "Long considered a mythical Pokémon until recently when a small colony was found living underwater.",
+        "ataque": 64,
+        "defensa": 45,
+        "ataqueEspecial": 50,
+        "defensaEspecial": 50,
+        "velocidad": 50,
+        "audioUrl": "https://example.com/audio/dratini.mp3",
+        "imagenUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/147.png",
+        "spriteUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/147.png",
+        "tipos": ["DRAGON"]
+      },
+      {
         "id": 150,
         "nombre": "Mewtwo",
         "numero": 150,
@@ -194,6 +274,86 @@ class PokedexController extends GetxController {
         "spriteUrl":
             "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/200.png",
         "tipos": ["GHOST"]
+      },
+      {
+        "id": 298,
+        "nombre": "Azurill",
+        "numero": 298,
+        "peso": 2.0,
+        "altura": 0.2,
+        "descripcion":
+            "Its tail bounces like a rubber ball. It flings that tail around to fight opponents bigger than itself.",
+        "ataque": 20,
+        "defensa": 40,
+        "ataqueEspecial": 20,
+        "defensaEspecial": 40,
+        "velocidad": 20,
+        "audioUrl": "https://example.com/audio/azurill.mp3",
+        "imagenUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/298.png",
+        "spriteUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/298.png",
+        "tipos": ["NORMAL", "FAIRY"]
+      },
+      {
+        "id": 349,
+        "nombre": "Feebas",
+        "numero": 349,
+        "peso": 7.4,
+        "altura": 0.6,
+        "descripcion":
+            "Although unattractive and unpopular, this Pokémon’s marvelous vitality has made it a subject of research.",
+        "ataque": 15,
+        "defensa": 20,
+        "ataqueEspecial": 10,
+        "defensaEspecial": 55,
+        "velocidad": 80,
+        "audioUrl": "https://example.com/audio/feebas.mp3",
+        "imagenUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/349.png",
+        "spriteUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/349.png",
+        "tipos": ["WATER"]
+      },
+      {
+        "id": 360,
+        "nombre": "Wynaut",
+        "numero": 360,
+        "peso": 14.0,
+        "altura": 0.6,
+        "descripcion":
+            "It tends to move in a pack. Individuals squash against one another to toughen their spirits.",
+        "ataque": 23,
+        "defensa": 48,
+        "ataqueEspecial": 23,
+        "defensaEspecial": 48,
+        "velocidad": 23,
+        "audioUrl": "https://example.com/audio/wynaut.mp3",
+        "imagenUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/360.png",
+        "spriteUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/360.png",
+        "tipos": ["PSYCHIC"]
+      },
+      {
+        "id": 446,
+        "nombre": "Munchlax",
+        "numero": 446,
+        "peso": 105.0,
+        "altura": 0.6,
+        "descripcion":
+            "It wolfs down its weight in food once a day, swallowing food whole with almost no chewing.",
+        "ataque": 85,
+        "defensa": 40,
+        "ataqueEspecial": 40,
+        "defensaEspecial": 85,
+        "velocidad": 5,
+        "audioUrl": "https://example.com/audio/munchlax.mp3",
+        "imagenUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/446.png",
+        "spriteUrl":
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/446.png",
+        "tipos": ["NORMAL"]
       },
       {
         "id": 448,

@@ -3,10 +3,15 @@ import 'package:my_pokedex_app/components/my_app_bar.dart';
 import 'package:my_pokedex_app/components/my_text_field.dart';
 import 'package:get/get.dart';
 import 'package:my_pokedex_app/models/entities/pokemon.dart';
+import 'package:my_pokedex_app/models/entities/user.dart';
 import 'pokedex_controller.dart';
 import 'package:my_pokedex_app/components/pokedex_entry.dart';
 
 class PokedexPage extends StatefulWidget {
+  final User userInfo;
+
+  PokedexPage({Key? key, required this.userInfo}) : super(key: key);
+
   @override
   State<PokedexPage> createState() => _PokedexPageState();
 }
@@ -14,10 +19,14 @@ class PokedexPage extends StatefulWidget {
 class _PokedexPageState extends State<PokedexPage> {
   Color backColor = const Color(0xFFF4F2F2);
   PokedexController control = Get.put(PokedexController());
+  List<Pokemon> userPokemons = [];
 
   @override
   void initState() {
-    control.filterPokemons = control.pokemons;
+    userPokemons = control.pokemons
+        .where((pokemon) => widget.userInfo.pokemons.contains(pokemon.nombre))
+        .toList();
+    control.filterPokemons = userPokemons;
     control.filterController.addListener(filterByName);
     super.initState();
   }
@@ -25,7 +34,7 @@ class _PokedexPageState extends State<PokedexPage> {
   void filterByName() {
     setState(() {
       String filterPokemon = control.filterController.text;
-      control.filterPokemons = control.pokemons
+      control.filterPokemons = userPokemons
           .where(
               (pokemon) => pokemon.nombre.toLowerCase().contains(filterPokemon))
           .toList();
@@ -34,7 +43,7 @@ class _PokedexPageState extends State<PokedexPage> {
 
   @override
   void dispose() {
-    control.filterController.dispose();
+    control.dispose();
     super.dispose();
   }
 

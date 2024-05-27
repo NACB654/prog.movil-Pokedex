@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:my_pokedex_app/components/my_app_bar.dart';
+import 'package:my_pokedex_app/models/entities/user.dart';
 import 'package:my_pokedex_app/pages/home/home_controller.dart';
 
 class HomePage extends StatelessWidget {
-  Color backColor = const Color(0xFFF4F2F2);
-  HomeController control = HomeController();
+  final Color backColor = const Color(0xFFF4F2F2);
+  final HomeController control = HomeController();
+  final User userInfo;
+
+  HomePage({Key? key, required this.userInfo}) : super(key: key);
 
   Widget _buildBody(BuildContext context) {
     return Container(
@@ -16,9 +20,9 @@ class HomePage extends StatelessWidget {
           Container(
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.all(15),
-            child: const Text(
-              'Hola usuario',
-              style: TextStyle(
+            child: Text(
+              'Hola ${userInfo.user}',
+              style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Roboto'),
@@ -40,7 +44,7 @@ class HomePage extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    control.goToPokedex(context);
+                    control.goToPokedex(context, userInfo);
                   },
                   child: Container(
                     decoration: const BoxDecoration(
@@ -73,7 +77,7 @@ class HomePage extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            control.goToFriends(context);
+                            control.goToFriends(context, userInfo);
                           },
                           child: Container(
                             decoration: const BoxDecoration(
