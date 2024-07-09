@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.all(15),
             child: Text(
-              'Hola ${userInfo.user}',
+              'Hola ${userInfo.nickname}', // CAMBIE DE USER A NICKNAME (user -> nickname)
               style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.w500,

@@ -20,6 +20,7 @@ class _FriendsPageState extends State<FriendsPage> {
   FriendController control = FriendController();
   List<Friend> userFriends = [];
 
+/* NO HAY AMIGOS DEFINIDOS EN USUARIO.PY EN EL BACK
   @override
   void initState() {
     userFriends = control.friends
@@ -29,7 +30,7 @@ class _FriendsPageState extends State<FriendsPage> {
     control.filterController.addListener(filterByName);
     super.initState();
   }
-
+*/
   void filterByName() {
     setState(() {
       String filter = control.filterController.text;

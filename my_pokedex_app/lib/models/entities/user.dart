@@ -1,28 +1,45 @@
+import 'package:my_pokedex_app/models/entities/pokemon.dart';
+
 class User {
-  String user;
+  int id;
+  String name;
+  String lastName;
+  String nickname;
+  String email;
   String password;
-  List<String> amigos;
-  List<String> pokemons;
+  String? imagenUrl; // Puede ser null
+  List<Pokemon> pokemons; 
 
   User({
-    required this.user,
+    required this.id,
+    required this.name,
+    required this.lastName,
+    required this.nickname,
+    required this.email,
     required this.password,
-    required this.amigos,
-    required this.pokemons
+    this.imagenUrl,
+    required this.pokemons,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        user: json["user"],
+        id: json["id"],
+        name: json["name"],
+        lastName: json["last_name"],
+        nickname: json["nickname"],
+        email: json["email"],
         password: json["password"],
-        amigos: List<String>.from(json['amigos']),
-        pokemons: List<String>.from(json["pokemons"])
+        imagenUrl: json["imagen_url"],
+        pokemons: List<Pokemon>.from(json["pokemons"].map((x) => Pokemon.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() =>
-      {
-        "user": user,
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "last_name": lastName,
+        "nickname": nickname,
+        "email": email,
         "password": password,
-        "amigos": amigos,
-        "pokemos": pokemons
+        "imagen_url": imagenUrl,
+        "pokemons": List<dynamic>.from(pokemons.map((x) => x.toJson())),
       };
 }
