@@ -24,7 +24,7 @@ class _PokedexPageState extends State<PokedexPage> {
   @override
   void initState() {
     userPokemons = control.pokemons
-        .where((pokemon) => widget.userInfo.pokemons.contains(pokemon.nombre))
+        .where((pokemon) => widget.userInfo.pokemons.contains(pokemon.name))
         .toList();
     control.filterPokemons = userPokemons;
     control.filterController.addListener(filterByName);
@@ -36,7 +36,7 @@ class _PokedexPageState extends State<PokedexPage> {
       String filterPokemon = control.filterController.text;
       control.filterPokemons = userPokemons
           .where(
-              (pokemon) => pokemon.nombre.toLowerCase().contains(filterPokemon))
+              (pokemon) => pokemon.name.toLowerCase().contains(filterPokemon))
           .toList();
     });
   }
@@ -69,10 +69,10 @@ class _PokedexPageState extends State<PokedexPage> {
                   itemBuilder: (context, index) {
                     Pokemon pokemon = control.filterPokemons[index];
                     return PokedexEntry(
-                      number: '#${pokemon.numero}',
-                      name: pokemon.nombre,
+                      number: '#${pokemon.index}',
+                      name: pokemon.name,
                       types: pokemon.tipos,
-                      imageUrl: pokemon.imagenUrl,
+                      imageUrl: pokemon.imagen_url,
                     );
                   },
                 );

@@ -48,14 +48,14 @@ class DetailPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    control.prueba.nombre,
+                    control.prueba.name,
                     style: const TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Text(
-                    '# 00${control.prueba.numero}',
+                    '# 00${control.prueba.index}',
                     style: const TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.w500,
@@ -73,7 +73,7 @@ class DetailPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            Image.network(control.prueba.imagenUrl, height: 200, width: 200),
+            Image.network(control.prueba.imagen_url, height: 200, width: 200),
             Expanded(
               child: Align(
                 alignment: Alignment.bottomCenter,
@@ -129,10 +129,10 @@ class DetailPage extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       child: Column(
         children: [
-          Text(control.prueba.descripcion),
+          Text(control.prueba.description),
           const SizedBox(height: 20),
-          Text("Height: ${control.prueba.altura}"),
-          Text("Weight: ${control.prueba.peso}"),
+          Text("Height: ${control.prueba.height}"),
+          Text("Weight: ${control.prueba.weight}"),
         ],
       ),
     );

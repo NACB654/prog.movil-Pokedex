@@ -1,54 +1,54 @@
 class Pokemon {
   int id;
-  String nombre;
-  int numero;
-  double peso;
-  double altura;
-  String descripcion;
-  int ataque;
-  int defensa;
-  int ataqueEspecial;
-  int defensaEspecial;
-  int velocidad;
-  String audioUrl;
-  String imagenUrl;
-  String spriteUrl;
+  String name;
+  int index;
+  double weight;
+  double height;
+  String description;
+  int attack;
+  int defense;
+  int sp_attack;
+  int sp_defense;
+  int speed;
+  String audio_url;
+  String imagen_url;
+  String sprite_url;
   List<String> tipos;
 
   Pokemon({
     required this.id,
-    required this.nombre,
-    required this.numero,
-    required this.peso,
-    required this.altura,
-    required this.descripcion,
-    required this.ataque,
-    required this.defensa,
-    required this.ataqueEspecial,
-    required this.defensaEspecial,
-    required this.velocidad,
-    required this.audioUrl,
-    required this.imagenUrl,
-    required this.spriteUrl,
+    required this.name,
+    required this.index,
+    required this.weight,
+    required this.height,
+    required this.description,
+    required this.attack,
+    required this.defense,
+    required this.sp_attack,
+    required this.sp_defense,
+    required this.speed,
+    required this.audio_url,
+    required this.imagen_url,
+    required this.sprite_url,
     required this.tipos,
   });
 
   factory Pokemon.fromJson(Map<String, dynamic> json) {
     return Pokemon(
       id: json['id'],
-      nombre: json['nombre'],
-      numero: json['numero'],
-      peso: json['peso'],
-      altura: json['altura'],
-      descripcion: json['descripcion'],
-      ataque: json['ataque'],
-      defensa: json['defensa'],
-      ataqueEspecial: json['ataqueEspecial'],
-      defensaEspecial: json['defensaEspecial'],
-      velocidad: json['velocidad'],
-      audioUrl: json['audioUrl'],
-      imagenUrl: json['imagenUrl'],
-      spriteUrl: json['spriteUrl'],
+      name: json['name'],
+      index: json['index'],
+      weight: json['weight'],
+      height: json['height'],
+      description: json['description'],
+      attack: json['attack'],
+      defense: json['defense'],
+      sp_attack: json['sp_attack'],
+      sp_defense: json['sp_defense'],
+      speed: json['speed'],
+      audio_url: json['audio_url'],
+      imagen_url: json['imagen_url'],
+      sprite_url: json['sprite_url'],
       tipos: List<String>.from(json['tipos']),
     );
   }
@@ -56,19 +56,19 @@ class Pokemon {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'nombre': nombre,
-      'numero': numero,
-      'peso': peso,
-      'altura': altura,
-      'descripcion': descripcion,
-      'ataque': ataque,
-      'defensa': defensa,
-      'ataqueEspecial': ataqueEspecial,
-      'defensaEspecial': defensaEspecial,
-      'velocidad': velocidad,
-      'audioUrl': audioUrl,
-      'imagenUrl': imagenUrl,
-      'spriteUrl': spriteUrl,
+      'name': name,
+      'index': index,
+      'weight': weight,
+      'height': height,
+      'description': description,
+      'attack': attack,
+      'defense': defense,
+      'sp_attack': sp_attack,
+      'sp_defense': sp_defense,
+      'speed': speed,
+      'audio_url': audio_url,
+      'imagen_url': imagen_url,
+      'sprite_url': sprite_url,
       'tipos': tipos,
     };
   }

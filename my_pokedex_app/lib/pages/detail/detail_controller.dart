@@ -6,19 +6,19 @@ class DetailController extends GetxController {
   
   Pokemon prueba = Pokemon(
       id: 1,
-      nombre: "Bulbasaur",
-      numero: 1,
-      peso: 6.9,
-      altura: 0.7,
-      descripcion:
+      name: "Bulbasaur",
+      index: 1,
+      weight: 6.9,
+      height: 0.7,
+      description:
           "A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon.",
-      ataque: 49,
-      defensa: 49,
-      ataqueEspecial: 65,
-      defensaEspecial: 65,
-      velocidad: 45,
-      audioUrl: "",
-      imagenUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-      spriteUrl: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      attack: 49,
+      defense: 49,
+      sp_attack: 65,
+      sp_defense: 65,
+      speed: 45,
+      audio_url: "",
+      imagen_url: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+      sprite_url: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
       tipos: ["GRASS", "POISON"]);
 }
