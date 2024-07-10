@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:get/get.dart';
 import 'package:my_pokedex_app/components/my_app_bar.dart';
 import 'package:my_pokedex_app/components/my_text_field.dart';
@@ -99,24 +98,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     style: TextStyle(color: control.messageColor.value),
                   ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Obx(() => Checkbox(
-                    value: control.termsCheck.value,
-                    activeColor: const Color(0xFFD2232A),
-                    onChanged: (value) {
-                      _showBottomSheet(context);
-                    },
-                  )),
-              const Expanded(
-                child: Text(
-                  'He leido y acepto los Términos y Condiciones',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-              ),
-            ],
-          ),
           const SizedBox(height: 10),
           _mybutton(context, "Registrarse")
         ],
@@ -192,93 +173,6 @@ class _SignUpPageState extends State<SignUpPage> {
           style: const TextStyle(color: Color(0xFFFFFFFF), fontSize: 16),
         ),
       ),
-    );
-  }
-
-  void _showBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          height: MediaQuery.of(context).size.height * 2,
-          color: Colors.white,
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              const SizedBox(height: 10),
-              const Text(
-                'Términos y Condiciones',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Expanded(
-                child: Markdown(
-                  data: control.markdownData.value,
-                ),
-              ),
-              SingleChildScrollView(
-                child: Column(
-                  children: [
-                    const SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Expanded(
-                            flex: 45,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                control.aceptTerms(context);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: const Size(double.infinity, 35),
-                                backgroundColor: const Color(0xFFD2232A),
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(4),
-                                  ),
-                                ),
-                              ),
-                              child: const Text(
-                                'Acepto',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 14),
-                              ),
-                            )),
-                        const Expanded(flex: 10, child: SizedBox(height: 0)),
-                        Expanded(
-                          flex: 45,
-                          child: OutlinedButton(
-                            onPressed: () {
-                              control.declineTerms(context);
-                            },
-                            style: OutlinedButton.styleFrom(
-                              minimumSize: const Size(double.infinity, 35),
-                              backgroundColor: Colors.white,
-                              side: const BorderSide(color: Color(0xFFD2232A)),
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(4),
-                                ),
-                              ),
-                            ),
-                            child: const Text(
-                              'No Acepto',
-                              style: TextStyle(
-                                  color: Color(0xFFD2232A), fontSize: 14),
-                            ),
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-        );
-      },
     );
   }
 

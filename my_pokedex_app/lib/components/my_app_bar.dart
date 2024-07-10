@@ -8,11 +8,18 @@ class MyAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      flexibleSpace: const Image(
-        image: AssetImage("assets/images/topimage.png"),
-        fit: BoxFit.cover,
+      flexibleSpace: Container(
+        decoration: BoxDecoration(
+          image: const DecorationImage(
+            image: AssetImage("assets/images/topimage.png"),
+            fit: BoxFit.cover,
+          ),
+          gradient: LinearGradient(
+              colors: [backColor.withOpacity(0.5), backColor],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight),
+        ),
       ),
-      backgroundColor: backColor,
       scrolledUnderElevation: 0,
     );
   }

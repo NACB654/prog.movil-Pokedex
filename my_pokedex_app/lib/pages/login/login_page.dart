@@ -85,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
       padding: const EdgeInsets.all(15),
       child: Column(
         children: [
-          SizedBox(width: 300, child: MyTextField("Usuario", false, control.nicknameController)),
+          SizedBox(width: 300, child: MyTextField("Usuario", false, control.emailController)),
           const SizedBox(height: 20),
           SizedBox(width: 300, child: MyTextField("Password", false, control.passwordController)),
           const SizedBox(height: 10),
