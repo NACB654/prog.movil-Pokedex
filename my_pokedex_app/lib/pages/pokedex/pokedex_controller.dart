@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_pokedex_app/models/entities/pokemon.dart';
+import 'package:my_pokedex_app/models/entities/user.dart';
 import 'package:my_pokedex_app/services/usuario_service.dart';
 
 class PokedexController extends GetxController {
   TextEditingController filterController = TextEditingController();
-  UserService usuario_service = UserService();
-  var pokemons = <Pokemon>[].obs;
+  UserService usuarioService = UserService();
+  User usuario = User.empty();
+  RxList<Pokemon> pokemons = RxList<Pokemon>([]);
   List<Pokemon> filterPokemons = [];
-  Future<List<Pokemon>?> getPokemons(int usuarioId) {
-    return usuario_service.getPokemons(usuarioId);
-  }
+
+  // void getPokemons() async {
+  //   userPokemons = await usuarioService.getPokemons(usuario.id);
+  // }
 }

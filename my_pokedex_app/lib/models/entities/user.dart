@@ -8,7 +8,9 @@ class User {
   String email;
   String password;
   String? imagenUrl; // Puede ser null
-  List<Pokemon> pokemons; 
+  List<Pokemon> pokemons;
+
+  User.empty() : id = 0, name = '', lastName = '', nickname = '', email = '', password = '', imagenUrl = '', pokemons = [];
 
   User({
     required this.id,

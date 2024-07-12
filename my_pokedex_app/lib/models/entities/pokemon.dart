@@ -1,9 +1,12 @@
+import 'package:my_pokedex_app/models/entities/habilidad.dart';
+import 'package:my_pokedex_app/models/entities/tipo.dart';
+
 class Pokemon {
   int id;
   String name;
   int index;
-  double weight;
-  double height;
+  int weight;
+  int height;
   String description;
   int attack;
   int defense;
@@ -13,7 +16,8 @@ class Pokemon {
   String audio_url;
   String imagen_url;
   String sprite_url;
-  List<String> tipos;
+  List<Tipo> tipos;
+  List<Ability> habilidades;
 
   Pokemon({
     required this.id,
@@ -31,6 +35,7 @@ class Pokemon {
     required this.imagen_url,
     required this.sprite_url,
     required this.tipos,
+    required this.habilidades
   });
 
   factory Pokemon.fromJson(Map<String, dynamic> json) {
@@ -49,7 +54,8 @@ class Pokemon {
       audio_url: json['audio_url'],
       imagen_url: json['imagen_url'],
       sprite_url: json['sprite_url'],
-      tipos: List<String>.from(json['tipos']),
+      tipos: List<Tipo>.from(json['tipo'].map((x) => Tipo.fromJson(x))),
+      habilidades: List<Ability>.from(json['habilidades'].map((x) => Ability.fromJson(x)))
     );
   }
 
@@ -69,7 +75,8 @@ class Pokemon {
       'audio_url': audio_url,
       'imagen_url': imagen_url,
       'sprite_url': sprite_url,
-      'tipos': tipos,
+      'tipo': List<dynamic>.from(tipos.map((e) => e.toJson())),
+      'habilidades': List<dynamic>.from(habilidades.map((x) => x.toJson())),
     };
   }
 }

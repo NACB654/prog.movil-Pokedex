@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:my_pokedex_app/models/entities/tipo.dart';
 
 class TypeBadge extends StatelessWidget {
-  final String type;
+  final Tipo type;
 
   TypeBadge(this.type);
 
   @override
   Widget build(BuildContext context) {
     Color badgeColor;
-    switch (type) {
+    switch (type.name) {
       case 'GRASS':
         badgeColor = const Color(0xFF3FA129);
         break;
@@ -73,7 +74,7 @@ class TypeBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: Text(
-        type,
+        type.name,
         style: const TextStyle(color: Colors.white),
       ),
     );

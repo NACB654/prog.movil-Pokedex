@@ -1,23 +1,23 @@
 class Tipo {
   int id;
-  String nombre;
+  String name;
 
   Tipo({
     required this.id,
-    required this.nombre,
+    required this.name,
   });
 
   factory Tipo.fromJson(Map<String, dynamic> json) {
     return Tipo(
       id: json['id'],
-      nombre: json['nombre'],
+      name: json['name'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'nombre': nombre,
+      'name': name,
     };
   }
 }

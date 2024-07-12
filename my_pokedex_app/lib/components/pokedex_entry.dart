@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:my_pokedex_app/models/entities/tipo.dart';
 import 'type_badge.dart';
 
 class PokedexEntry extends StatelessWidget {
   final String number;
   final String name;
-  final List<String> types;
+  final List<Tipo> types;
   final String imageUrl;
 
   PokedexEntry({

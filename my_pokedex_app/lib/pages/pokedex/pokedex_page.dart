@@ -19,15 +19,11 @@ class PokedexPage extends StatefulWidget {
 class _PokedexPageState extends State<PokedexPage> {
   Color backColor = const Color(0xFFF4F2F2);
   PokedexController control = Get.put(PokedexController());
-  List<Pokemon> userPokemons = [];
 
   @override
   void initState() {
-    userPokemons = control
-        .getPokemons(widget.userInfo.id)
-        .where((pokemon) => widget.userInfo.pokemons.contains(pokemon.name))
-        .toList();
-    control.filterPokemons = userPokemons;
+    control.pokemons = RxList<Pokemon>.from(widget.userInfo.pokemons);
+    control.filterPokemons = control.pokemons.toList();
     control.filterController.addListener(filterByName);
     super.initState();
   }
@@ -35,10 +31,7 @@ class _PokedexPageState extends State<PokedexPage> {
   void filterByName() {
     setState(() {
       String filterPokemon = control.filterController.text;
-      control.filterPokemons = userPokemons
-          .where(
-              (pokemon) => pokemon.name.toLowerCase().contains(filterPokemon))
-          .toList();
+      control.filterPokemons = control.pokemons.where((pokemon) => pokemon.name.toLowerCase().contains(filterPokemon)).toList();
     });
   }
 
@@ -73,7 +66,7 @@ class _PokedexPageState extends State<PokedexPage> {
                       number: '#${pokemon.index}',
                       name: pokemon.name,
                       types: pokemon.tipos,
-                      imageUrl: pokemon.imagen_url,
+                      imageUrl: pokemon.sprite_url,
                     );
                   },
                 );
@@ -87,6 +80,8 @@ class _PokedexPageState extends State<PokedexPage> {
 
   @override
   Widget build(BuildContext context) {
+    // control.usuario = widget.userInfo;
+    // control.getPokemons();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: PreferredSize(
