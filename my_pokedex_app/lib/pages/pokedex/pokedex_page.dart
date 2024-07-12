@@ -23,7 +23,8 @@ class _PokedexPageState extends State<PokedexPage> {
 
   @override
   void initState() {
-    userPokemons = control.pokemons
+    userPokemons = control
+        .getPokemons(widget.userInfo.id)
         .where((pokemon) => widget.userInfo.pokemons.contains(pokemon.name))
         .toList();
     control.filterPokemons = userPokemons;
