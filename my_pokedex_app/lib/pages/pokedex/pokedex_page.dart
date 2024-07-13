@@ -22,7 +22,6 @@ class _PokedexPageState extends State<PokedexPage> {
 
   @override
   void initState() {
-    control.pokemons = RxList<Pokemon>.from(widget.userInfo.pokemons);
     control.filterPokemons = control.pokemons.toList();
     control.filterController.addListener(filterByName);
     super.initState();
@@ -80,8 +79,7 @@ class _PokedexPageState extends State<PokedexPage> {
 
   @override
   Widget build(BuildContext context) {
-    // control.usuario = widget.userInfo;
-    // control.getPokemons();
+    control.getPokemons(widget.userInfo.id);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: PreferredSize(

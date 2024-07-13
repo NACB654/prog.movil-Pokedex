@@ -8,9 +8,6 @@ class User {
   String email;
   String password;
   String? imagenUrl; // Puede ser null
-  List<Pokemon> pokemons;
-
-  User.empty() : id = 0, name = '', lastName = '', nickname = '', email = '', password = '', imagenUrl = '', pokemons = [];
 
   User({
     required this.id,
@@ -20,7 +17,6 @@ class User {
     required this.email,
     required this.password,
     this.imagenUrl,
-    required this.pokemons,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
@@ -31,7 +27,6 @@ class User {
         email: json["email"],
         password: json["password"],
         imagenUrl: json["imagen_url"],
-        pokemons: List<Pokemon>.from(json["pokemons"].map((x) => Pokemon.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -42,6 +37,5 @@ class User {
         "email": email,
         "password": password,
         "imagen_url": imagenUrl,
-        "pokemons": List<dynamic>.from(pokemons.map((x) => x.toJson())),
       };
 }
