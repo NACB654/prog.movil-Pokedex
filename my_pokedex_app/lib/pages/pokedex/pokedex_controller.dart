@@ -13,6 +13,7 @@ class PokedexController extends GetxController {
   void getPokemons(int usuarioId) async {
     List<Pokemon>? result = await usuarioService.getPokemons(usuarioId);
     pokemons = RxList<Pokemon>.from(result!);
+    print(pokemons);
   }
 
   void goToDetail(BuildContext context, Pokemon pokemonInfo) {

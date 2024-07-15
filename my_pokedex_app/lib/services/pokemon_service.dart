@@ -20,7 +20,7 @@ class PokemonService {
       if (response.statusCode == 201) {
         return Pokemon.fromJson(jsonDecode(response.body));
       } else if (response.statusCode == 404) {
-        print(jsonDecode(response.body).msg);
+        print(jsonDecode(response.body));
 
         return null;
       } else {
