@@ -73,6 +73,11 @@ class _SignUpPageState extends State<SignUpPage> {
                 MyTextField("Nombre completo", false, control.nameController),
           ),
           const SizedBox(height: 20),
+           SizedBox(
+          width: 300,
+          child: MyTextField("Nickname", false, control.nicknameController),
+        ),
+          const SizedBox(height: 20),
           SizedBox(
             width: 300,
             child: MyTextField(
@@ -155,9 +160,11 @@ class _SignUpPageState extends State<SignUpPage> {
       width: 200,
       child: TextButton(
         onPressed: () {
-          if (control.createAccount()) {
-            _dialogBuilder(context);
-          }
+          control.registerUser(context).then((_) {
+            if (control.message.value == "Registro exitoso") {
+              _dialogBuilder(context);
+            }
+          });
         },
         style: TextButton.styleFrom(
           textStyle: Theme.of(context).textTheme.labelLarge,
