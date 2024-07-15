@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_pokedex_app/pages/detail/datail_page.dart';
 import 'package:my_pokedex_app/pages/login/login_page.dart';
 
 void main() {

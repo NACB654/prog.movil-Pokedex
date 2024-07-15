@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        control.goToEscanear(context);
+                        control.goToEscanear(context, userInfo.id);
                       },
                       child: Container(
                         decoration: const BoxDecoration(

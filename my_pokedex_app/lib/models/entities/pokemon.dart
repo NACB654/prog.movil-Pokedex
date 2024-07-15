@@ -1,5 +1,6 @@
 import 'package:my_pokedex_app/models/entities/habilidad.dart';
 import 'package:my_pokedex_app/models/entities/tipo.dart';
+import 'package:my_pokedex_app/models/entities/ruta.dart';
 
 class Pokemon {
   int id;
@@ -18,45 +19,47 @@ class Pokemon {
   String sprite_url;
   List<Tipo> tipos;
   List<Ability> habilidades;
+  List<Ruta> rutas;
 
-  Pokemon({
-    required this.id,
-    required this.name,
-    required this.index,
-    required this.weight,
-    required this.height,
-    required this.description,
-    required this.attack,
-    required this.defense,
-    required this.sp_attack,
-    required this.sp_defense,
-    required this.speed,
-    required this.audio_url,
-    required this.imagen_url,
-    required this.sprite_url,
-    required this.tipos,
-    required this.habilidades
-  });
+  Pokemon(
+      {required this.id,
+      required this.name,
+      required this.index,
+      required this.weight,
+      required this.height,
+      required this.description,
+      required this.attack,
+      required this.defense,
+      required this.sp_attack,
+      required this.sp_defense,
+      required this.speed,
+      required this.audio_url,
+      required this.imagen_url,
+      required this.sprite_url,
+      required this.tipos,
+      required this.habilidades,
+      required this.rutas});
 
   factory Pokemon.fromJson(Map<String, dynamic> json) {
     return Pokemon(
-      id: json['id'],
-      name: json['name'],
-      index: json['index'],
-      weight: json['weight'],
-      height: json['height'],
-      description: json['description'],
-      attack: json['attack'],
-      defense: json['defense'],
-      sp_attack: json['sp_attack'],
-      sp_defense: json['sp_defense'],
-      speed: json['speed'],
-      audio_url: json['audio_url'],
-      imagen_url: json['imagen_url'],
-      sprite_url: json['sprite_url'],
-      tipos: List<Tipo>.from(json['tipo'].map((x) => Tipo.fromJson(x))),
-      habilidades: List<Ability>.from(json['habilidades'].map((x) => Ability.fromJson(x)))
-    );
+        id: json['id'],
+        name: json['name'],
+        index: json['index'],
+        weight: json['weight'],
+        height: json['height'],
+        description: json['description'],
+        attack: json['attack'],
+        defense: json['defense'],
+        sp_attack: json['sp_attack'],
+        sp_defense: json['sp_defense'],
+        speed: json['speed'],
+        audio_url: json['audio_url'],
+        imagen_url: json['imagen_url'],
+        sprite_url: json['sprite_url'],
+        tipos: List<Tipo>.from(json['tipo'].map((x) => Tipo.fromJson(x))),
+        habilidades: List<Ability>.from(
+            json['habilidades'].map((x) => Ability.fromJson(x))),
+        rutas: List<Ruta>.from(json['ruta'].map((x) => Ruta.fromJson(x))));
   }
 
   Map<String, dynamic> toJson() {
@@ -77,6 +80,7 @@ class Pokemon {
       'sprite_url': sprite_url,
       'tipo': List<dynamic>.from(tipos.map((e) => e.toJson())),
       'habilidades': List<dynamic>.from(habilidades.map((x) => x.toJson())),
+      'ruta': List<dynamic>.from(rutas.map((e) => e.toJson()))
     };
   }
 }
