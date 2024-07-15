@@ -69,30 +69,34 @@ class _SignUpPageState extends State<SignUpPage> {
         children: [
           SizedBox(
             width: 300,
-            child:
-                MyTextField("Nombre completo", false, control.nameController),
-          ),
-          const SizedBox(height: 20),
-           SizedBox(
-          width: 300,
-          child: MyTextField("Nickname", false, control.nicknameController),
-        ),
-          const SizedBox(height: 20),
-          SizedBox(
-            width: 300,
-            child: MyTextField(
-                "Correo electronico", false, control.emailController),
+            child: MyTextField("Nombre", false, control.nameController, false),
           ),
           const SizedBox(height: 20),
           SizedBox(
             width: 300,
-            child: MyTextField("Password", false, control.passwordController),
+            child: MyTextField("Apellido", false, control.lastNameController, false),
+          ),
+          const SizedBox(height: 20),
+          SizedBox(
+            width: 300,
+            child: MyTextField("Nickname", false, control.nicknameController, false),
           ),
           const SizedBox(height: 20),
           SizedBox(
             width: 300,
             child: MyTextField(
-                "Repeat password", false, control.password2Controller),
+                "Correo electronico", false, control.emailController, false),
+          ),
+          const SizedBox(height: 20),
+          SizedBox(
+            width: 300,
+            child: MyTextField("Password", false, control.passwordController, true),
+          ),
+          const SizedBox(height: 20),
+          SizedBox(
+            width: 300,
+            child: MyTextField(
+                "Repeat password", false, control.password2Controller, true),
           ),
           const SizedBox(height: 10),
           Obx(
@@ -136,7 +140,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   child: const Text(
-                    'Registrarse',
+                    'Regresar',
                     style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 16),
                   ),
                   onPressed: () {
@@ -160,11 +164,8 @@ class _SignUpPageState extends State<SignUpPage> {
       width: 200,
       child: TextButton(
         onPressed: () {
-          control.registerUser(context).then((_) {
-            if (control.message.value == "Registro exitoso") {
-              _dialogBuilder(context);
-            }
-          });
+          control.registerUser(context);
+          _dialogBuilder(context);
         },
         style: TextButton.styleFrom(
           textStyle: Theme.of(context).textTheme.labelLarge,
@@ -185,8 +186,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    control.getTerms();
-
     return MaterialApp(
         home: Scaffold(
       resizeToAvoidBottomInset: true,

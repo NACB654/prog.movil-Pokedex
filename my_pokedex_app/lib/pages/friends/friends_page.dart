@@ -56,7 +56,7 @@ class _FriendsPageState extends State<FriendsPage> {
       child: Column(
         children: [
           const SizedBox(height: 30),
-          MyTextField('Filtrar', true, control.filterController),
+          MyTextField('Filtrar', true, control.filterController, false),
           const SizedBox(height: 20),
           Expanded(
             child: control.friends.isEmpty

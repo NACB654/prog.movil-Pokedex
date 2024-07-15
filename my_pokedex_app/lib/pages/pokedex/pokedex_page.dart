@@ -22,7 +22,7 @@ class _PokedexPageState extends State<PokedexPage> {
 
   @override
   void initState() {
-    control.filterPokemons = control.pokemons.toList();
+    control.filterPokemons = control.pokemons;
     control.filterController.addListener(filterByName);
     super.initState();
   }
@@ -30,10 +30,9 @@ class _PokedexPageState extends State<PokedexPage> {
   void filterByName() {
     setState(() {
       String filterPokemon = control.filterController.text;
-      control.filterPokemons = control.pokemons
+      control.filterPokemons = RxList.from(control.pokemons
           .where(
-              (pokemon) => pokemon.name.toLowerCase().contains(filterPokemon))
-          .toList();
+              (pokemon) => pokemon.name.toLowerCase().contains(filterPokemon)));
     });
   }
 
@@ -53,7 +52,7 @@ class _PokedexPageState extends State<PokedexPage> {
       child: Column(
         children: [
           const SizedBox(height: 30),
-          MyTextField('Filtrar', true, control.filterController),
+          MyTextField('Filtrar', true, control.filterController, false),
           const SizedBox(height: 20),
           Expanded(
             child: Obx(() {

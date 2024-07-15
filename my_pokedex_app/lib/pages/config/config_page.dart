@@ -106,7 +106,7 @@ class ConfigPage extends StatelessWidget {
               child: Column(
                 children: [
                   MyTextField(
-                      "Correo electronico", false, control.emailController),
+                      "Correo electronico", false, control.emailController, false),
                   const SizedBox(height: 15),
                   //Boton
                   SizedBox(

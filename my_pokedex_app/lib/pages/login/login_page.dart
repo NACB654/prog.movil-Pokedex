@@ -85,9 +85,9 @@ class _LoginPageState extends State<LoginPage> {
       padding: const EdgeInsets.all(15),
       child: Column(
         children: [
-          SizedBox(width: 300, child: MyTextField("Usuario", false, control.emailController)),
+          SizedBox(width: 300, child: MyTextField("Usuario", false, control.emailController, false)),
           const SizedBox(height: 20),
-          SizedBox(width: 300, child: MyTextField("Password", false, control.passwordController)),
+          SizedBox(width: 300, child: MyTextField("Password", false, control.passwordController, true)),
           const SizedBox(height: 10),
           Obx(
             () => control.message.value == ''
@@ -154,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
               alignment: Alignment.center,
               child: Column(
                 children: [
-                  MyTextField("Correo electronico", false, control.emailController),
+                  MyTextField("Correo electronico", false, control.emailController, false),
                   const SizedBox(height: 15),
                   //Boton
                   SizedBox(

@@ -22,7 +22,7 @@ class HomeController extends GetxController {
                 )));
   }
 
-  void goToEscanear(BuildContext context, int userId) async {
+  Future<Pokemon?> goToEscanear(BuildContext context, int userId) async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.camera);
 
@@ -31,7 +31,9 @@ class HomeController extends GetxController {
       Pokemon? newPokemon = await identifyPokemon(file, userId);
 
       if (newPokemon != null) {
-        
+        return newPokemon;
+      } else {
+        return null;
       }
     }
   }

@@ -8,7 +8,7 @@ class PokedexController extends GetxController {
   TextEditingController filterController = TextEditingController();
   UserService usuarioService = UserService();
   RxList<Pokemon> pokemons = RxList<Pokemon>([]);
-  List<Pokemon> filterPokemons = [];
+  RxList<Pokemon> filterPokemons = RxList<Pokemon>([]);
 
   void getPokemons(int usuarioId) async {
     List<Pokemon>? result = await usuarioService.getPokemons(usuarioId);

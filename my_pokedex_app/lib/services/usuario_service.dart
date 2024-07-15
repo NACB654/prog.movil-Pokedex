@@ -4,7 +4,7 @@ import 'package:my_pokedex_app/models/entities/pokemon.dart';
 import '../../models/entities/user.dart';
 
 class UserService {
-  static const String apiUrl = 'http://10.0.2.2:5000/usuarios';
+  static const String apiUrl = 'http://localhost:5000/usuarios';
 
   Future<User?> validateUser(String email, String password) async {
     String url = "$apiUrl/login";
@@ -28,6 +28,29 @@ class UserService {
       }
     } catch (e, stackTrace) {
       print('Unexpected error: $e');
+      print(stackTrace);
+
+      return null;
+    }
+  }
+
+  Future<User?> createUser(Map<String, String> user) async {
+    String url = "$apiUrl/register";
+
+    try {
+      final response = await http.post(Uri.parse(url),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode(user));
+
+      if (response.statusCode == 201) {
+        return User.fromJson(jsonDecode(response.body));
+      } else {
+        print("Error: ${response.statusCode}");
+
+        return null;
+      }
+    } catch (err,stackTrace) {
+      print('Unexpected error: $err');
       print(stackTrace);
 
       return null;

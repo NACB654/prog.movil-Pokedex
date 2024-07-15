@@ -22,6 +22,7 @@ class LoginController extends GetxController {
   }
 
   void loginAccount(BuildContext context) async {
+    print("hola");
     User? userFound = await findUser();
 
     if (userFound != null) {
@@ -41,7 +42,7 @@ class LoginController extends GetxController {
   }
 
   Future<User?> findUser() async {
-    String email= emailController.text;
+    String email = emailController.text;
     String password = passwordController.text;
 
     return await userService.validateUser(email, password);

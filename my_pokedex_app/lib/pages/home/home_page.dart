@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_pokedex_app/components/my_app_bar.dart';
+import 'package:my_pokedex_app/models/entities/pokemon.dart';
 import 'package:my_pokedex_app/models/entities/user.dart';
 import 'package:my_pokedex_app/pages/home/home_controller.dart';
+import 'package:my_pokedex_app/pages/result/result_page.dart';
 
 class HomePage extends StatelessWidget {
   final Color backColor = const Color(0xFFF4F2F2);
@@ -50,17 +52,26 @@ class HomePage extends StatelessWidget {
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage("assets/images/btn_pokedex.png"),
-                          fit: BoxFit.fitHeight),
+                          fit: BoxFit.contain),
                     ),
-                    height: 190,
+                    height: 180,
                   ),
                 ),
-                const SizedBox(height: 10),
+                // const SizedBox(height: 10),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     GestureDetector(
-                      onTap: () {
-                        control.goToEscanear(context, userInfo.id);
+                      onTap: () async {
+                        Pokemon? newPokemon =
+                            await control.goToEscanear(context, userInfo.id);
+                        print(newPokemon);
+                        if (newPokemon != null) {
+                          Navigator.push(context, MaterialPageRoute(builder: ((context) => ResultPage(pokemonInfo: newPokemon, userInfo: userInfo,))));
+                        } else {
+
+                        }
+                        
                       },
                       child: Container(
                         decoration: const BoxDecoration(
@@ -69,8 +80,8 @@ class HomePage extends StatelessWidget {
                                   AssetImage("assets/images/btn_escanear.png"),
                               fit: BoxFit.contain),
                         ),
-                        height: 190,
-                        width: 200,
+                        height: MediaQuery.of(context).size.height * 0.2,
+                        width: 165,
                       ),
                     ),
                     Column(
@@ -84,10 +95,10 @@ class HomePage extends StatelessWidget {
                               image: DecorationImage(
                                   image: AssetImage(
                                       "assets/images/btn_amigos.png"),
-                                  fit: BoxFit.cover),
+                                  fit: BoxFit.contain),
                             ),
-                            height: 130,
-                            width: 190,
+                            height: MediaQuery.of(context).size.height * 0.15,
+                            width: 170,
                           ),
                         ),
                         const SizedBox(height: 5),
@@ -103,7 +114,7 @@ class HomePage extends StatelessWidget {
                                   fit: BoxFit.contain),
                             ),
                             height: 60,
-                            width: 190,
+                            width: MediaQuery.of(context).size.width * 0.45,
                           ),
                         ),
                       ],
@@ -126,6 +137,10 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  // void _showSnackbar(BuildContext context) {
+  //   final snackbar = SnackBar(content: Text('Error al identificar Pokemon. Vuelve a intentarlo más tarde'), action: ,)
+  // }
 
   @override
   Widget build(BuildContext context) {
