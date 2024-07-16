@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:my_pokedex_app/models/entities/friends.dart';
 
 class FriendService {
-  static const String baseUrl = 'http://10.0.2.2:5000';
+  static const String baseUrl = 'http://localhost:5000';
 
   Future<List<Friend>> getFriends(String currentUserId) async {
     final response = await http.get(Uri.parse('$baseUrl/friends/get_friends?current_user_id=$currentUserId'));
