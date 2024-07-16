@@ -65,13 +65,17 @@ class HomePage extends StatelessWidget {
                       onTap: () async {
                         Pokemon? newPokemon =
                             await control.goToEscanear(context, userInfo.id);
-                        print(newPokemon);
                         if (newPokemon != null) {
-                          Navigator.push(context, MaterialPageRoute(builder: ((context) => ResultPage(pokemonInfo: newPokemon, userInfo: userInfo,))));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: ((context) => ResultPage(
+                                        pokemonInfo: newPokemon,
+                                        userInfo: userInfo,
+                                      ))));
                         } else {
-
+                          _showSnackbar(context);
                         }
-                        
                       },
                       child: Container(
                         decoration: const BoxDecoration(
@@ -138,9 +142,15 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // void _showSnackbar(BuildContext context) {
-  //   final snackbar = SnackBar(content: Text('Error al identificar Pokemon. Vuelve a intentarlo más tarde'), action: ,)
-  // }
+  void _showSnackbar(BuildContext context) {
+    const snackbar = SnackBar(
+      content:
+          Text('Error al identificar Pokemon. Vuelve a intentarlo más tarde'),
+      duration: Duration(seconds: 5),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+  }
 
   @override
   Widget build(BuildContext context) {
