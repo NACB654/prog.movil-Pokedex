@@ -24,6 +24,8 @@ class _FriendsPageState extends State<FriendsPage> {
 
   @override
   void initState() {
+    control.filterFriend = control.friends;
+    control.filterController.addListener(filterByName);
     super.initState();
     fetchFriends();
   }
@@ -104,12 +106,15 @@ class _FriendsPageState extends State<FriendsPage> {
         final addedFriend = await Navigator.push<Friend>(
           context,
           MaterialPageRoute(
-            builder: (context) => SearchResultPage(friend: resultFriend, currentUserId: widget.userInfo.id.toString()),
+            builder: (context) => SearchResultPage(
+                friend: resultFriend,
+                currentUserId: widget.userInfo.id.toString()),
           ),
         );
 
         if (addedFriend != null) {
-          await control.addFriend(widget.userInfo.id.toString(), addedFriend.id.toString());
+          await control.addFriend(
+              widget.userInfo.id.toString(), addedFriend.id.toString());
           setState(() {
             userFriends.add(addedFriend);
             control.filterFriend = userFriends;
@@ -121,122 +126,123 @@ class _FriendsPageState extends State<FriendsPage> {
     }
   }
 
-  Future<void> showDeleteSuccessDialog(BuildContext context, Friend friend) async {
-  return showDialog<void>(
-    context: context,
-    barrierDismissible: false,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'Has eliminado a ${friend.nickname}',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+  Future<void> showDeleteSuccessDialog(
+      BuildContext context, Friend friend) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          contentPadding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Has eliminado a ${friend.nickname}',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              child: Text(
-                'REGRESAR',
-                style: TextStyle(color: Colors.white),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: Text(
+                  'REGRESAR',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-            ),
-          ],
-        ),
-      );
-    },
-  );
-}
+            ],
+          ),
+        );
+      },
+    );
+  }
 
-
-  Future<void> showDeleteFriendDialog(BuildContext context, Friend friend) async {
-  return showDialog<void>(
-    context: context,
-    barrierDismissible: false,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              '¿Estás seguro que quieres eliminar a ${friend.nickname}?',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+  Future<void> showDeleteFriendDialog(
+      BuildContext context, Friend friend) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          contentPadding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                '¿Estás seguro que quieres eliminar a ${friend.nickname}?',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    side: BorderSide(color: Colors.red),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      side: BorderSide(color: Colors.red),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Text(
+                      'NO',
+                      style: TextStyle(color: Colors.red),
                     ),
                   ),
-                  child: Text(
-                    'NO',
-                    style: TextStyle(color: Colors.red),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    await control.deleteFriend(widget.userInfo.id.toString(), friend.id.toString());
-                    setState(() {
-                      userFriends.remove(friend);
-                      control.filterFriend = userFriends;
-                    });
-                    Navigator.of(context).pop();
-                    showDeleteSuccessDialog(context, friend);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                  ElevatedButton(
+                    onPressed: () async {
+                      await control.deleteFriend(
+                          widget.userInfo.id.toString(), friend.id.toString());
+                      setState(() {
+                        userFriends.remove(friend);
+                        control.filterFriend = userFriends;
+                      });
+                      Navigator.of(context).pop();
+                      showDeleteSuccessDialog(context, friend);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Text(
+                      'SI',
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  child: Text(
-                    'SI',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      );
-    },
-  );
-}
-
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 
   @override
   void dispose() {
@@ -254,7 +260,7 @@ class _FriendsPageState extends State<FriendsPage> {
       alignment: Alignment.center,
       child: Column(
         children: [
-          const SizedBox(height: 30),
+          const SizedBox(height: 20),
           Align(
             alignment: Alignment.centerRight,
             child: IconButton(

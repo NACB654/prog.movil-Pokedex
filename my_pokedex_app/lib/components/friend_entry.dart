@@ -27,7 +27,7 @@ class FriendEntry extends StatelessWidget {
         ),
       ),
       child: ListTile(
-        leading: Image.asset(imageUrl),
+        leading: Image.asset(imageUrl == "" ? "assets/images/red.png" : imageUrl),
         title: Text(name),
         subtitle: Row(
           children: [
