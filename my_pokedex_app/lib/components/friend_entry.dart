@@ -4,16 +4,20 @@ class FriendEntry extends StatelessWidget {
   final String name;
   final int pokemons;
   final String imageUrl;
+  final VoidCallback onLongPress;
 
   FriendEntry({
     required this.name,
     required this.pokemons,
     required this.imageUrl,
+    required this.onLongPress,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return GestureDetector(
+      onLongPress: onLongPress,
+      child: Card(
       margin: const EdgeInsets.all(8.0),
       color: const Color(0xFFF4F2F2),
       shape: const RoundedRectangleBorder(
@@ -34,6 +38,8 @@ class FriendEntry extends StatelessWidget {
           ],
         ),
       ),
+    ),
     );
+    
   }
 }

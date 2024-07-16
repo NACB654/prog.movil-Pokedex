@@ -4,7 +4,7 @@ import 'package:my_pokedex_app/models/entities/pokemon.dart';
 import '../../models/entities/user.dart';
 
 class UserService {
-  static const String apiUrl = 'http://localhost:5000/usuarios';
+  static const String apiUrl = 'http://10.0.2.2:5000/usuarios';
 
   Future<User?> validateUser(String email, String password) async {
     String url = "$apiUrl/login";

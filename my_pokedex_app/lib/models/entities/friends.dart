@@ -1,24 +1,19 @@
 class Friend {
-  String username;
-  String imagenUrl;
-  int pokemons;
+  final int id;
+  final String imagenUrl;
+  final String nickname;
 
   Friend({
-    required this.username,
+    required this.id,
     required this.imagenUrl,
-    required this.pokemons
+    required this.nickname,
   });
 
-  factory Friend.fromJson(Map<String, dynamic> json) => Friend(
-        username: json["user"],
-        imagenUrl: json['imagenUrl'],
-        pokemons: json["pokemons"]
-      );
-
-  Map<String, dynamic> toJson() =>
-      {
-        "user": username,
-        "imagenUrl": imagenUrl,
-        "pokemons": pokemons
-      };
+  factory Friend.fromJson(Map<String, dynamic> json) {
+    return Friend(
+      id: json['id'] ?? 0,
+      imagenUrl: json['imagen_url'] ?? '',
+      nickname: json['nickname'] ?? '',
+    );
+  }
 }

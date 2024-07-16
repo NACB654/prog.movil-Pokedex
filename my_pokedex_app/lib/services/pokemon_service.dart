@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:my_pokedex_app/models/entities/pokemon.dart';
 
 class PokemonService {
-  static const String apiUrl = "http://localhost:5000/pokemons";
+  static const String apiUrl = "http://10.0.2.2:5000/pokemons";
 
   Future<Pokemon?> identifyPokemon(File photo, int userId) async {
     String url = "$apiUrl/identificar/$userId";
